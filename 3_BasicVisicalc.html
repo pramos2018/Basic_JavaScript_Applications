@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title> Basic VisiCalc Spreadsheet - June 2016	</title>
+	<script src="3_BasicVisiCalc.js"></script>
+	<style "Text/CSS" > 
+		body {
+			text-align:center;
+			font-size: 12px;
+			font-family: Arial;
+		}
+		th, td {
+			//width: 30px;
+			//height: 10px;
+			//font-weight:bold;
+			font-size: 12px;
+		}
+		li {
+			border:1px solid black;
+			text-align: left;
+			margin:5px;
+			padding:5px;
+		}
+		ul {
+			//border:1px solid black;
+			//width: 640px;
+			list-style-type: none;
+			margin:0px;
+			padding:0px;
+			
+		}
+		#div_table {
+		
+			//border:1px solid black;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			margin: 5px;
+			margin-top: 55px;
+			margin-left: -320px;
+			
+			//float:left;
+			padding:5px;
+	
+			//display: inline-block;
+			width: 640px;
+			height: 480px;
+			
+			//overflow-y: scroll;
+			//overflow-x: scroll;
+			font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+			//font-family: Arial,Arial,monaco,Bitstream Vera Sans Mono,monospace;
+			
+	
+		}
+		#div_opt {
+			//border:1px solid black;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			
+			margin-top: -70px;
+			margin-left: -320px;
+			
+			//float:left;
+			padding:0px;
+	
+			//display: inline-block;
+			width: 650px;
+			height: 50px;
+		}
+		#div_title{
+			//border:1px solid black;
+			text-align: center;
+			margin:0px;
+			font-weight:bold;
+			font-size: 20px;
+			//color: Blue;
+		
+			position: absolute;
+			top: 25%;
+			left: 50%;
+			margin-top: -160px;
+			margin-left: -320px;
+			padding:0px;
+			
+		}
+		#btnNew, #btnEdit, #btnHelp, #btnExit, #btnUpdate, #btnUp, #btnDw, #btnLf, #btnRg { 
+			border:1px solid gray;
+			padding:2px;
+			font-size:12px;
+			//margin:5px; 
+			font-family: Arial;
+			border-radius: 3px;
+			background-color: #e7e7e7;
+			color: black;
+		}
+		#textOut {
+		
+			border:1px solid black;
+			font-size:10px;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			margin: 5px;
+			margin-top: 55px;
+			margin-left: -160px;
+			
+			//float:left;
+			padding:5px;
+	
+			//display: inline-block;
+			width: 320px;
+			height: 380px;
+			
+			background-color: #e7e7e7;
+			
+			//overflow-y: scroll;
+			//overflow-x: scroll;
+			//font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+			//font-family: Arial,Arial,monaco,Bitstream Vera Sans Mono,monospace;
+			
+	
+		}
+		#div_opt {
+		
+		
+	</style>
+</head>
+
+<body>
+<a name="start"></a>
+<header>
+</header>
+
+<section>
+
+<div id="div_title">
+	<p>Project#3 - Basic Visicalc Spreadsheet </p>
+
+</div>
+
+<div id="div_table">
+<table align="left" border="1" cellspacing="0" cellpadding="5"> 
+	<tr>
+		<th id="R1C1" value="1">A1</th>
+		<th id="R1C2" value="2">A2</th>
+		<th id="R1C3" value="3">A3</th>
+	</tr>
+	<tr>
+		<th id="R2C1" value="4">B1</th>
+		<th id="R2C2" value="5">B2</th>
+		<th id="R2C3" value="6">B3</th>
+	</tr>
+	<tr>
+		<th id="R3C1" value="7">B4</th>
+		<th id="R3C2" value="8">B5</th>
+		<th id="R3C3" value="9">B6</th>
+	</tr>
+</table>		
+</div>
+	
+	<div id="div_opt" border="1">
+	<ul>
+		<li>
+		<select id="fileMenu" name="fileMenu">
+			<option value="File">File</option>
+			<option value="New">New File</option>
+			<option value="Save">Save File</option>
+			<option value="Exit">Exit</option>
+		</select>
+		<select id="editMenu" name="editMenu">
+			<option value="Edit">Edit</option>
+			<option value="Edit Cell">Edit Cell</option>
+			<option value="View Cell">View Cell</option>
+			<option value="">----------------------</option>
+			<option value="Resize Columns">Resize Columns</option>
+			<option value="Format Range">Format Range</option>
+			<option value="Delete Range">Delete Range</option>
+			<option value="Copy Range">Copy Range</option>
+			<option value="Hide/UnHide Rows/Cols">Hide/UnHide Rows/Cols</option>
+			<option value="">----------------------</option>
+			<option value="Insert Row">Insert Row(s)</option>
+			<option value="Insert Col">Insert Columns(s)</option>
+			<option value="Delete Row">Delete Row(s)</option>
+			<option value="Delete Col">Delete Columns(s)</option>
+			<option value="Exclude Row">Exclude Row(s)</option>
+			<option value="Exclude Col">Exclude Columns(s)</option>
+		</select>
+		<select id="helpMenu" name="helpMenu">
+			<option value="Help">Help</option>
+			<option value="Show Help">Show Help</option>
+			<option value="Functions">Functions</option>
+			<option value="About">About</option>
+		</select>
+		
+		<label type ="button" for="btnOpen" style="border:1px solid gray; padding:3px;font-size: 12px;margin:5px; border-radius: 3px;background-color: #e7e7e7; color: black;font-family: Arial;"> <span class="file"> Open </span></label> 
+		<input id="btnOpen" type='file' accept='text/plain' onchange='openFile(event)' style="visibility: hidden; position: absolute;">
+		
+		<input id="btnNew"  type="button" name="btnNewGame" value="New">
+		<input id="btnEdit" type="button" name="btnEdit" value="Edit">
+		<input id="btnHelp" type="button" name="btnNewGame" value="Help">
+		<input id="btnExit" type="button" name="btnExit" value="Exit ">
+		
+		</li>
+	
+		<li>
+		Cell:  <input style="width:40px;" id= "txtCell" type="Text" name="inp1" value="">
+		Value:  <input style="width:100px;" id= "txtValue" type="Text" name="inp2" value="">
+		Formula/Text: <input style="width:220px;" id= "txtFormula" type="Text" name="inp3" value="">
+		<input id="btnUpdate" type="button" name="btnUpdate" value="Update" style="width:60px;">
+		</li>
+		
+		<li>
+		<input id="btnUp" type="button" name="scUp" value="Up">
+		<input id="btnDw" type="button" name="scDw" value="Dw">
+		<input id="btnLf" type="button" name="scLf" value="<<">
+		<input id="btnRg" type="button" name="scRg" value=">>">
+		
+		<input style="width:30px;text-align:center;" id= "txtGoto" type="Text" name="inp4" value="A1">
+		<input id="btnGT" type="button" name="btnGT" value="GoTo">
+		
+		</li>
+		
+	</ul>
+	</div>
+	<div id="output">
+	</div>
+
+
+</section>
+
+
+
+
+<footer></footer>
+</body>
+
+</html>

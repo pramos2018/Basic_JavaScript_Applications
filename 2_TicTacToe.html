@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title> Tic-Tac-Toe Game - June 2016	</title>
+	<script src="2_TicTacToe.js"></script>
+	<style "Text/CSS" > 
+		body {
+			text-align:center;
+		}
+		th {
+			width: 30px;
+			height: 30px;
+			font-weight:bold;
+			font-size: 20px;
+		}
+		li {
+			text-align: left;
+			margin:0px;
+			padding:0px;
+		}
+		ul {
+			border:1px solid black;
+			width: 170px;
+			list-style-type: none;
+			margin:0px;
+			padding:10px;
+			
+		}
+		#btnNG {
+			width: 80px;
+			height: 25px;
+		}
+		#btnEX {
+			width: 70px;
+			height: 25px;
+		}
+		#div_game {
+			position: absolute;
+			top: 35%;
+			left: 50%;
+			margin-top: -70px;
+			margin-left: -190px;
+			
+			//float:left;
+			padding:0px;
+	
+			//display: inline-block;
+			width: 180px;
+			height: 170px;
+	
+		}
+		#div_opt {
+			position: absolute;
+			top: 35%;
+			left: 50%;
+			
+			margin-top: -70px;
+			margin-left: -25px;
+			
+			//float:left;
+			padding:0px;
+	
+			//display: inline-block;
+			width: 200px;
+			height: 170px;
+		}
+		#div_title{
+			//border:1px solid black;
+			text-align: center;
+			margin:0px;
+			font-weight:bold;
+			font-size: 20px;
+			//color: Blue;
+		
+			position: absolute;
+			top: 35%;
+			left: 50%;
+			margin-top: -160px;
+			margin-left: -160px;
+			padding:0px;
+		}
+		#lblStatus {
+			text-align: left;
+			margin:0px;
+			font-weight:bold;
+			font-size: 14px;
+			color: Blue;
+		}
+		
+	
+	</style>
+</head>
+
+<body>
+<a name="start"></a>
+<header>
+</header>
+
+<section>
+
+<div id="div_title">
+	<p>Project#2 - Basic Tic-Tac-Toe Game </p>
+	<p id = "lblStatus"> Player#1 vs Player#2 </p>
+
+</div>
+
+<div id="div_game">
+<table align="center" border="1" cellspacing="0" cellpadding="5"> <!-- width="500", widht="75%", cellpadding="10"-->
+	<tr>
+		<th id="btn1" name="1">1</th>
+		<th id="btn2" value="2">2</th>
+		<th id="btn3" value="3">3</th>
+	</tr>
+	<tr>
+		<th id="btn4" value="4">4</th>
+		<th id="btn5" value="5">5</th>
+		<th id="btn6" value="6">6</th>
+	</tr>
+	<tr>
+		<th id="btn7" value="7">7</th>
+		<th id="btn8" value="8">8</th>
+		<th id="btn9" value="9">9</th>
+	</tr>
+</table>		
+</div>
+	
+	<div id="div_opt" border="1">
+	<ul>
+		
+		<li><input id= "r1" type="radio" name="options" value="1">Player#1 vs Player#2</li>
+		<li><input id= "r2" type="radio" name="options" value="2">Player#1 vs Computer</li>
+		<li><input id= "r3" type="radio" name="options" value="3">Computer vs Player#1</li>
+		<hr>
+		<li><input id="btnNG" type="button" name="btnNewGame" value="New Game">
+		<input id="btnEX" type="button" name="btnExit" value="Exit "></li>
+		
+	</ul>
+	</div>
+
+
+</section>
+
+
+
+
+<footer></footer>
+</body>
+
+</html>

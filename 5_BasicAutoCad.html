@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title> Basic AutoCad Program - August 2016	</title>
+	<script src="5_BasicAutoCad.js"></script>
+	<style "Text/CSS" > 
+		body {
+			text-align:center;
+			font-size: 12px;
+			font-family: Arial;
+		}
+		th, td {
+			//width: 30px;
+			//height: 10px;
+			//font-weight:bold;
+			font-size: 12px;
+		}
+		li {
+			border:1px solid black;
+			text-align: left;
+			margin:5px;
+			padding:2px;
+		}
+		ul {
+			//border:1px solid black;
+			//width: 640px;
+			list-style-type: none;
+			margin:0px;
+			padding:0px;
+			
+		}
+		#main_div {
+		
+			//border:1px solid black;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			margin: 5px;
+			margin-top: 20px;
+			margin-left: -320px;
+			
+			//float:left;
+			padding:5px;
+	
+			//display: inline-block;
+			width: 640px;
+			height: 440px;
+			
+			//overflow-y: scroll;
+			//overflow-x: scroll;
+			font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+			//font-family: Arial,Arial,monaco,Bitstream Vera Sans Mono,monospace;
+			
+	
+		}
+		#div_opt {
+			//border:1px solid black;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			
+			margin-top: -70px;
+			margin-left: -320px;
+			
+			//float:left;
+			padding:0px;
+	
+			//display: inline-block;
+			width: 650px;
+			height: 50px;
+		}
+		#div_title{
+			//border:1px solid black;
+			text-align: center;
+			margin:0px;
+			font-weight:bold;
+			font-size: 20px;
+			//color: Blue;
+		
+			position: absolute;
+			top: 25%;
+			left: 50%;
+			margin-top: -160px;
+			margin-left: -320px;
+			padding:0px;
+			
+		}
+		#btnNew, #btnEdit, #btnHelp, #btnExit, #btnUpdate, #btnUp, #btnDw, #btnLf, #btnRg { 
+			border:1px solid gray;
+			padding:2px;
+			font-size:12px;
+			//margin:5px; 
+			font-family: Arial;
+			border-radius: 3px;
+			background-color: #e7e7e7;
+			color: black;
+		}
+		#textOut {
+		
+			border:1px solid black;
+			font-size:10px;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			margin: 5px;
+			margin-top: 55px;
+			margin-left: -160px;
+			
+			//float:left;
+			padding:5px;
+	
+			//display: inline-block;
+			width: 320px;
+			height: 380px;
+			background-color: #e7e7e7;
+			
+			//overflow-y: scroll;
+			//overflow-x: scroll;
+			//font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+			//font-family: Arial,Arial,monaco,Bitstream Vera Sans Mono,monospace;
+			
+	
+		}
+		#lblStatus {
+			font-family: Arial;
+			font-size:12px;
+			font-weight:bold;
+			padding: 0px;
+			margin: 5px;
+			text-align: left;
+		}
+		
+		
+	</style>
+</head>
+
+<body>
+<a name="start"></a>
+<header>
+</header>
+
+<section>
+
+<div id="div_title">
+	<p>Project#5 - Basic AutoCad Program </p>
+
+</div>
+
+<div id="main_div">
+	<canvas id="canvas" width="640" height="440" style="border:2px solid black;">
+			Error: Your browser needs to be Updated.
+	</canvas>
+</div>
+	
+	<div id="div_opt" border="1">
+	<ul>
+		<li>
+		<select id="fileMenu" name="fileMenu" style="width:100px;">
+			<option value="File">File</option>
+			<option value="New">New File</option>
+			<option value="Save">Export TXT</option>
+			<option value="Exit">Exit</option>
+		</select>
+		<select id="editMenu" name="editMenu" style="width:100px;">
+			<option value="Edit">Edit</option>
+			<option value="">----------------</option>
+			<option value="Cut">Cut</option>
+			<option value="Copy">Copy</option>
+			<option value="Paste">Paste</option>
+			<option value="">----------------</option>
+			<option value="Font">Change Font</option>
+			<option value="Color">Change Color</option>
+			<option value="zoomIN">Zoom IN</option>
+			<option value="zoomOut">Zoom Out</option>
+			
+		</select>
+		<select id="helpMenu" name="helpMenu" style="width:100px;">
+			<option value="Help">Help</option>
+			<option value="About">About</option>
+			<option value="List">List Components</option>
+		</select>
+		
+		<label type ="button" for="btnOpen" style="border:1px solid gray; padding:3px;font-size: 12px;margin:5px; border-radius: 3px;background-color: #e7e7e7; color: black;font-family: Arial;"> <span class="file"> Open </span></label> 
+		<input id="btnOpen" type='file' accept='text/plain' onchange='openSchFile(event)' style="visibility: hidden; position: absolute;">
+
+		<input id="btnClear"  type="button" name="btnClear" value="Clear" style="width:50px;">
+		<input id="btnCut"  type="button" name="btnCut" value="Cut" style="width:50px;">
+		<input id="btnCopy"  type="button" name="btnCopy" value="Copy" style="width:50px;">
+		<input id="btnPaste"  type="button" name="btnPaste" value="Paste" style="width:50px;">
+		<input id="btnFont"  type="button" name="btnFont" value="Font" style="width:50px;">
+		
+		</li>
+	
+		<li>
+	    Shape:
+		<select id="shapeMenu" name="shapeMenu" style="width:100px;">
+                <option value="0">Line</option>
+                <option value="1">Rectangle</option>
+                <option value="2">Circle</option>
+                <option value="3">Text</option>
+                <option value="4">***************</option>
+                <option value="5">Wire</option>
+                <option value="6">Resistor</option>
+                <option value="7">Capacitor</option>
+                <option value="8">Electrolytic Capacitor</option>
+                <option value="9">Diode</option>
+                <option value="10">LED</option>
+                <option value="11">LDR</option>
+                
+                <option value="12">Transistor NPN</option>
+                <option value="13">Transistor PNP</option>
+                <option value="14">Variable Resistor</option>
+                <option value="15">Variable Capacitor</option>
+
+                <option value="16">Positive</option>
+                <option value="17">Negative</option>
+                <option value="18">Ground</option>
+                <option value="19">Battery</option>
+                <option value="20">Speaker</option>
+                <option value="21">Connector</option>
+                <option value="22">Dot</option>
+                
+                <option value="23">Inductor 2 pins</option>
+                <option value="24">Inductor 3 pins</option>
+                <option value="25">Small Inductor</option>
+                <option value="26">Relay</option>
+                <option value="27">Transformer</option>
+                <option value="28">RF Coil</option>
+                
+                <option value="29">***************</option>
+                <option value="30">IC 2 pins</option>
+                <option value="31">IC 4 pins</option>
+                <option value="32">IC 6 pins</option>
+                <option value="33">IC 8 pins</option>
+                <option value="34">IC 10 pins</option>
+                <option value="35">IC 12 pins</option>
+                <option value="36">IC 14 pins</option>
+                <option value="37">IC 16 pins</option>
+                <option value="38">IC 18 pins</option>
+                <option value="39">IC 20 pins</option>
+                <option value="40">IC 22 pins</option>
+                <option value="41">IC 24 pins</option>
+                <option value="42">IC 26 pins</option>
+                <option value="43">IC 28 pins</option>
+                <option value="44">IC 30 pins</option>
+                <option value="45">IC 32 pins</option>
+                <option value="46">IC 34 pins</option>
+                <option value="47">IC 36 pins</option>
+                <option value="48">IC 38 pins</option>
+                <option value="49">IC 40 pins</option>
+                <option value="50">IC 42 pins</option>
+                <option value="51">IC 44 pins</option>
+                <option value="52">IC 46 pins</option>
+                <option value="53">IC 48 pins</option>
+                <option value="54">IC 50 pins</option>
+                <option value="55">***************</option>
+			
+			
+		</select>
+		<!--
+		Fill: <input type="checkbox" id = "ckFill" name="ckFill" value="Fill">
+		Size: <input style="width:30px;" id= "txtSize" type="Text" name="inp1" value="50">
+		-->
+		Pen: <input style="width:30px;" id= "txtPen" type="Text" name="inp2" value="2">
+		Text: <input style="width:120px;" id= "txtInput" type="Text" name="inp3" value="">
+		<input id="btnColor" type="button" name="btnColor" value="Color" style="width:50px;">
+		<input id="btnRot" type="button" name="btnRot" value="Rotate" style="width:50px;">
+		<input id="btnExit" type="button" name="btnExit" value="Exit" style="width:50px;">
+		
+		</li>
+		<p id="lblStatus">Selected Shape: Drawing</p>
+		
+	</ul>
+	</div>
+	<div id="output">
+	</div>
+
+
+</section>
+
+
+
+
+<footer></footer>
+</body>
+
+</html>
